@@ -14,3 +14,6 @@ parameters(base_path, target_path)
 
 screenshot.py: Take a screenshot of local videos, you can choose the time interval
 parameters(base_path, target_path, timeF)
+
+JDCrawler.py: Crawl images from JD
+no parameters

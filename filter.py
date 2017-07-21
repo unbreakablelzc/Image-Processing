@@ -17,14 +17,19 @@ def filter(base_path, target_path):
 		fname = os.path.join(base_path, f)
 		sname = os.path.join(target_path, f)
 		
-		img = Image.open(fname).convert('RGB')
-		width, height = img.size
-		if width > 255 and height > 255:
-				img2 = img.copy()
-				img2.save(sname)
-				filtered += 1
-		total += 1
-		print 'Process {0}({1}) images'.format(total, filtered)
+		try:
+			img = Image.open(fname).convert('RGB')
+			width, height = img.size
+			if width > 255 and height > 255:
+					img2 = img.copy()
+					img2.save(sname)
+					filtered += 1
+			total += 1
+			print 'Process {0}({1}) images'.format(total, filtered)
+		except Exception as e:
+			print 'Error: {} image cannot be identified\n'.format(total)
+			print(e)
+			
 if __name__ == '__main__':
 	images_folder = sys.argv[1]
 	target_folder = sys.argv[2]
